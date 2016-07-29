@@ -29,7 +29,7 @@
         from: @session.ccnq_from_e164
         stamp: stamp
         client: @session.endpoint # from huge-play
-        carrier: @session.winner?.carrier # from tough-rate
+        carrier: @session.winner # from tough-rate
 
       assert @session.rated?, 'Unable to rate'
 

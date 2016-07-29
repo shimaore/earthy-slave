@@ -30,11 +30,10 @@ Client-side data
 Carrier-side data
 
               winner:
-                carrier:
-                  rating:
-                    '2016-01-01':
-                      table: 'carrier+current'
-                  timezone: 'UTC'
+                rating:
+                  '2016-01-01':
+                    table: 'carrier+current'
+                timezone: 'UTC'
 
             call:
               once: (event) ->
