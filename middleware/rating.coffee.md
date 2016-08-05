@@ -12,9 +12,11 @@
 * cfg.rating.tables (URI prefix) used to access the rating tables of the entertaining-crib module. Default: cfg.prefix_admin (from nimble-direction, i.e. env.NIMBLE_PREFIX_ADMIN)
 
     @server_pre = ->
+      debug 'server_pre'
       @cfg.rating = new Rating
         source: @cfg.rating?.source ? 'default'
         rating_tables: @cfg.rating?.tables ? PouchDB.defaults prefix: @cfg.prefix_admin
+      debug 'server_pre: Ready'
 
     @include = seem ->
 
@@ -22,6 +24,8 @@
 * session.rated.carrier (Rated object from entertaining-crib) rating object, carrier-side
 
       stamp = new Date().toISOString()
+
+      debug 'stamp', stamp
 
       @session.rated = yield @cfg.rating.rate
         direction: @session.cdr_direction
@@ -59,3 +63,5 @@ or in-progress (async).
         .catch (error) ->
           debug 'cdr_report', error.stack ? error.toString()
         return
+
+      debug 'Ready'
