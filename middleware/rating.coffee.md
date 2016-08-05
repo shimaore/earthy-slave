@@ -37,8 +37,9 @@
           carrier: @session.winner # from tough-rate
         .catch (error) ->
           debug "rating_rate failed: #{error.stack ? error}"
+          null
 
-      unless @session.rated?
+      unless @session.rated?.client?
         @respond '500 Unable to rate'
         return
 

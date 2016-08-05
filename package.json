@@ -4,7 +4,7 @@
   "description": "CCNQ4: rating middleware",
   "main": "index.js",
   "dependencies": {
-    "entertaining-crib": "^2.0.0",
+    "entertaining-crib": "^2.0.1",
     "pouchdb": "^5.4.5",
     "seem": "^2.0.0"
   },
@@ -15,7 +15,7 @@
     "mocha": "^3.0.1"
   },
   "scripts": {
-    "pretest": "npm install --only=dev",
+    "pretest": "npm install && npm install --only=dev",
     "test": "mocha"
   },
   "author": "Stéphane Alnet <stephane@shimaore.net> (http://stephane.shimaore.net/)",
