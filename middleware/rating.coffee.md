@@ -39,7 +39,7 @@
           debug "rating_rate failed: #{error.stack ? error}"
           null
 
-      unless @session.rated?.client?
+      unless @session.rated?.client? or @cfg.route_non_billable_calls
         @respond '500 Unable to rate'
         return
 
