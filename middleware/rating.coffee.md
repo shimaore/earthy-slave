@@ -2,7 +2,6 @@
     @name = "#{pkg.name}:middleware:rating"
     debug = (require 'debug') @name
     seem = require 'seem'
-    assert = require 'assert'
 
     Rating = require 'entertaining-crib'
     PouchDB = require 'pouchdb'
