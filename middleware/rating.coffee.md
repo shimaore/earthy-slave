@@ -14,7 +14,11 @@
       debug 'server_pre'
       @cfg.rating = new Rating
         source: @cfg.rating?.source ? 'default'
-        rating_tables: @cfg.rating?.tables ? PouchDB.defaults prefix: @cfg.prefix_admin
+        rating_tables:
+          if not @cfg.rating?.tables? or typeof @cfg.rating?.tables is 'string'
+            PouchDB.defaults prefix: @cfg.rating?.tables ? @cfg.prefix_admin
+          else
+            @cfg.rating?.tables
       debug 'server_pre: Ready'
 
     @include = seem ->
