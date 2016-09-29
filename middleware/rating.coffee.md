@@ -53,7 +53,7 @@ The rating object was initialized, now apply the actual call billable (connected
 
         for own side, rated of @session.rated
           debug 'computing', {side,rated}
-          rated.compute Math.ceil report.billable / 1000
+          rated.compute Math.ceil parseInt(report.billable) / 1000
           @session.rated[side] = rated.toJSON()
 
         debug 'handle_report emit', @session.rated
