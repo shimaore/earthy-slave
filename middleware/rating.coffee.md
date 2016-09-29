@@ -11,11 +11,11 @@
 * cfg.rating.tables (URI prefix) used to access the rating tables of the entertaining-crib module. Default: cfg.prefix_admin (from nimble-direction, i.e. env.NIMBLE_PREFIX_ADMIN)
 
     @server_pre = ->
-      debug 'server_pre'
+      debug 'server_pre', @cfg
       @cfg.rating = new Rating
         source: @cfg.rating?.source ? 'default'
         rating_tables:
-          if not @cfg.rating?.tables? or typeof @cfg.rating?.tables is 'string'
+          if not @cfg.rating?.tables? or typeof @cfg.rating.tables is 'string'
             PouchDB.defaults prefix: @cfg.rating?.tables ? @cfg.prefix_admin
           else
             @cfg.rating?.tables
