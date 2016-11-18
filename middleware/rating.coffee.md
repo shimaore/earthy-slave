@@ -40,7 +40,9 @@
         .rate params
         .catch (error) ->
           debug "rating_rate failed: #{error.stack ? error}"
-          {}
+          null
+
+      @session.rated ?= {}
 
       switch
         when not params.direction?
