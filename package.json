@@ -4,7 +4,7 @@
   "description": "CCNQ4: rating middleware",
   "main": "index.js",
   "dependencies": {
-    "entertaining-crib": "^3.1.0",
+    "entertaining-crib": "^3.2.0",
     "pouchdb": "^6.0.7",
     "seem": "^2.0.0"
   },
