@@ -28,23 +28,31 @@
 
       stamp = new Date().toISOString()
 
-      debug 'stamp', stamp
-
-      @session.rated = yield @cfg.rating
-        .rate
+      params =
           direction: @session.cdr_direction
           to: @session.ccnq_to_e164
           from: @session.ccnq_from_e164
           stamp: stamp
           client: @session.endpoint # from huge-play
           carrier: @session.winner # from tough-rate
+
+      @session.rated = yield @cfg.rating
+        .rate params
         .catch (error) ->
           debug "rating_rate failed: #{error.stack ? error}"
-          null
+          {}
 
-      unless @session.rated?.client? or @cfg.route_non_billable_calls
-        @respond '500 Unable to rate'
-        return
+      switch
+        when not params.direction?
+          debug 'Routing non-billable call: no direction provided'
+        when @cfg.route_non_billable_calls
+          debug 'Routing non-billable call: configuration allowed'
+        when not @session.rated?.client?
+          debug 'Unable to rate'
+          @respond '500 Unable to rate'
+          return
+        else
+          debug 'Routing'
 
 The rating object was initialized, now apply the actual call billable (connected) duration.
 

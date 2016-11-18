@@ -64,6 +64,7 @@ Carrier-side data
             currency: 'EUR'
             divider: 1
             per: 60
+            ready: true
           yield db.put
             _id:'prefix:1800'
             initial:
@@ -79,6 +80,7 @@ Carrier-side data
             currency: 'EUR'
             divider: 1
             per: 60
+            ready: true
           yield db.put
             _id:'prefix:1800'
             initial:
