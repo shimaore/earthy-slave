@@ -27,6 +27,7 @@
 * session.rated.carrier (Rated object from entertaining-crib) rating object, carrier-side
 
       stamp = new Date().toISOString()
+      @session.rated_stamp = stamp
 
       params =
           direction: @session.cdr_direction
