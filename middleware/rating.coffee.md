@@ -27,7 +27,6 @@
 * session.rated.carrier (Rated object from entertaining-crib) rating object, carrier-side
 
       stamp = new Date().toISOString()
-      @session.rated_stamp = stamp
 
       params =
           direction: @session.cdr_direction
@@ -44,6 +43,7 @@
           null
 
       @session.rated ?= {}
+      @session.rated.params = params
 
       switch
 
@@ -79,7 +79,7 @@ The rating object was initialized, now apply the actual call billable (connected
       handle_report = (report) =>
         debug 'handle_report', report
 
-        for own side, rated of @session.rated
+        for own side, rated of @session.rated when side isnt 'params'
           debug 'computing', {side,rated}
           rated.compute Math.ceil parseInt(report.billable) / 1000
           @session.rated[side] = rated.toJSON()
