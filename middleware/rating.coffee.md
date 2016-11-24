@@ -46,14 +46,31 @@
       @session.rated ?= {}
 
       switch
+
+This is the case e.g. for calls to voicemail.
+
         when not params.direction?
           debug 'Routing non-billable call: no direction provided'
+
+This is the case e.g. for centrex-to-centrex (internal) calls.
+
+        when params.direction is 'ingress' and not params.from? and not params.to?
+          debug 'Routing non-billable call: no billable number on ingress'
+
+System-wide configuration accepting non-billable calls.
+
         when @cfg.route_non_billable_calls
           debug 'Routing non-billable call: configuration allowed'
+
+Reject non-billable (client-side) calls otherwise.
+
         when not @session.rated?.client?
-          debug 'Unable to rate'
+          debug 'Unable to rate', @session.dialplan
           yield @respond '500 Unable to rate'
           return
+
+Accept billable calls.
+
         else
           debug 'Routing'
 
