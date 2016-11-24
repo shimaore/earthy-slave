@@ -1,6 +1,6 @@
 {
   "name": "earthy-slave",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "CCNQ4: rating middleware",
   "main": "index.js",
   "dependencies": {
