@@ -52,7 +52,7 @@
           debug 'Routing non-billable call: configuration allowed'
         when not @session.rated?.client?
           debug 'Unable to rate'
-          @respond '500 Unable to rate'
+          yield @respond '500 Unable to rate'
           return
         else
           debug 'Routing'
