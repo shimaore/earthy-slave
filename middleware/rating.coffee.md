@@ -59,6 +59,13 @@ This is the case e.g. for centrex-to-centrex (internal) calls.
 
 System-wide configuration accepting non-billable calls.
 
+- ingress
+
+        when params.direction is 'ingress' and @cfg.route_non_billable_ingress_calls
+          debug 'Routing non-billable ingress call: configuration allowed'
+
+- both directions
+
         when @cfg.route_non_billable_calls
           debug 'Routing non-billable call: configuration allowed'
 
