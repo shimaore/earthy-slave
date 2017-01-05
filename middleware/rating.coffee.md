@@ -4,7 +4,7 @@
     seem = require 'seem'
 
     Rating = require 'entertaining-crib'
-    PouchDB = require 'pouchdb'
+    PouchDB = require 'shimaore-pouchdb'
 
 * cfg.rating (object, optional) parameters for the rating of calls
 * cfg.rating.source (string) name of the cfg.rating.tables source. Default: `default`

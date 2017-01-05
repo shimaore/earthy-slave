@@ -6,7 +6,8 @@
   "dependencies": {
     "entertaining-crib": "^3.2.0",
     "pouchdb": "^6.0.7",
-    "seem": "^2.0.0"
+    "seem": "^2.0.0",
+    "shimaore-pouchdb": "^6.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
