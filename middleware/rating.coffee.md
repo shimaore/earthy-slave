@@ -33,7 +33,7 @@
           to: @session.ccnq_to_e164
           from: @session.ccnq_from_e164
           stamp: stamp
-          client: @session.endpoint # from huge-play
+          client: @session.endpoint # from huge-play (egress-only since 15.x)
           carrier: @session.winner # from tough-rate
 
       @session.rated = yield @cfg.rating
