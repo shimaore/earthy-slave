@@ -81,31 +81,4 @@ Accept billable calls.
         else
           debug 'Routing'
 
-The rating object was initialized, now apply the actual call billable (connected) duration.
-
-      handle_report = (report) =>
-        debug 'handle_report', report
-
-        for own side, rated of @session.rated when side isnt 'params'
-          debug 'computing', {side,rated}
-          rated.compute Math.ceil parseInt(report.billable) / 1000
-          @session.rated[side] = rated.toJSON()
-
-        debug 'handle_report emit', @session.rated
-        @call.emit 'rated', @session.rated
-
-Handle both the case where the calls is over (sync)
-
-      if @session.cdr_report?
-        handle_report @session.cdr_report
-
-or in-progress (async).
-
-      else
-        @call.once 'cdr_report'
-        .then (report) -> handle_report report
-        .catch (error) ->
-          debug 'cdr_report', error.stack ? error.toString()
-        return
-
       debug 'Ready'
