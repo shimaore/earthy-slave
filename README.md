@@ -1,3 +1,5 @@
+OBSOLETE, all functionality has been moved to `astonishing-competition`.
+
 Rating Middleware for CCNQ4
 ---------------------------
 
